@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: hellok8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web 
+          imagePullPolicy: Always
+          image: registry.digitalocean.com/bascr/hellok8s:latest
+          ports:
+          - containerPort: 5000
+
+
